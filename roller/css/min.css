@@ -63,7 +63,7 @@
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background: deeppink;
+  background: radial-gradient(circle at 10px 7px, #ffbaad, #e02200);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
