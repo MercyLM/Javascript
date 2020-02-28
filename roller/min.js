@@ -70,7 +70,7 @@ function reset(arrow, num, rand, t, e) {
     //計時器
     timer = setInterval(function () {
 
-        alert("恭喜您轉到了 " + arr[(rand - 1) % num] + " 元！");
+        alert("恭喜您抽到了 " + arr[(rand - 1) % num] + " 元！");
 
         //初始化
         arrow.style.transform = "";
