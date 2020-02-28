@@ -45,37 +45,42 @@ function pos() {
 }
 
 //亂數產生要旋轉的角度、動畫時間
-function rand() {
+function rand(e) {
 
     var arrow = document.getElementsByClassName("arrow")[0];
-
+    
+    e.target.style.display = "none";
+    
     //隨機產生60~120次(5~10圈)
     var rand = parseInt(Math.random() * 60) + 60;
     //隨機旋轉 5 ~ 8 秒
     var t = parseInt(Math.random() * 5) + 3;
-    
+
     arrow.style.transform = "translate(-50%, -50%) " + "rotate(" + rand * deg + "deg)";
     arrow.style.transition = t + "s";
 
-    reset(arrow, num, rand, t);
+    reset(arrow, num, rand, t, e);
 }
 
 //計算並顯示結果後初始化
-function reset(arrow, num, rand, t) {
+function reset(arrow, num, rand, t, e) {
 
     var timer = null;
 
+    //計時器
     timer = setInterval(function () {
 
         alert("恭喜您轉到了 " + arr[(rand - 1) % num] + " 元！");
-        
+
         //初始化
         arrow.style.transform = "";
         arrow.style.transition = "";
         
+        e.target.style.display = "block";
+
         //清除計時
         clearInterval(timer);
-        
+
     }, t * 1000);
 }
 
@@ -85,7 +90,7 @@ function init() {
     var btn = document.getElementById("btn");
 
     pos();
-    
+
     btn.addEventListener("click", rand, false);
 }
 
