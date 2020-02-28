@@ -75,8 +75,7 @@ function reset(arrow, num, rand, t, e) {
         //初始化
         arrow.style.transform = "";
         arrow.style.transition = "";
-        
-        e.target.style.display = "block";
+        e.target.style.display = "";
 
         //清除計時
         clearInterval(timer);
