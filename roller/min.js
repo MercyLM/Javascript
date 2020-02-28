@@ -49,8 +49,8 @@ function rand() {
 
     var arrow = document.getElementsByClassName("arrow")[0];
 
-    //隨機產生24~120次(2~10圈)
-    var rand = parseInt(Math.random() * 96) + 24;
+    //隨機產生60~120次(5~10圈)
+    var rand = parseInt(Math.random() * 60) + 60;
     //隨機旋轉 5 ~ 8 秒
     var t = parseInt(Math.random() * 5) + 3;
     
