@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>作業 22</title>
+    <style>
+        .input {
+
+            display: block;
+
+            margin: 10px auto;
+        }
+
+        .btn {
+
+            display: block;
+
+            margin: 0 auto;
+        }
+
+        .show-box {
+
+            margin: 0 auto;
+
+            width: 75%;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="min" type="text" class="input" placeholder="請輸入最小值">
+    <input id="max" type="text" class="input" placeholder="請輸入最大值">
+    <button id="btn" type="button" class="btn">發送</button>
+    <div id="show" class="show-box"></div>
+    <script type="text/javascript">
+        function sendNumber() {
+
+            //物件化
+            var int_min = document.getElementById("min");
+            var int_max = document.getElementById("max");
+            //型別宣告
+            var min = 0;
+            var max = 0;
+            
+            min = parseInt(int_min.value);
+            max = parseInt(int_max.value);
+
+            //傳入min、max值到rand函式
+            rand(min, max);
+
+            //重置
+            min.value = "";
+            max.value = "";
+        }
+
+        function rand(min, max) {
+            
+            var text = "";
+            
+            for (i = min + 1; i < max; i++) {
+                
+                text += i + " ";
+            }
+            
+            document.getElementById("show").innerText = text;
+        }
+
+        //註冊監聽事件
+        function init() {
+
+            var btn = document.getElementById("btn");
+
+            btn.addEventListener("click", sendNumber, false);
+        }
+
+        window.onload = init;
+    </script>
+</body></html>

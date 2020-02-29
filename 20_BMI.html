@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+
+<head>
+    <meta charset="utf-8">
+    <title>作業 20</title>
+    <style>
+        body,
+        p {
+
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .box {
+
+            position: relative;
+
+            height: 100vh;
+            width: 100%;
+            min-width: 400px;
+
+            background: skyblue;
+        }
+
+        .box .content {
+
+            position: relative;
+
+            top: 50%;
+            transform: translate(0, -50%);
+
+            margin: 0 auto;
+
+            height: 150px;
+            width: 400px;
+
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 5px black;
+        }
+
+        .box .content .form {
+
+            padding: 25px 15% 25px 15%;
+        }
+
+        .box .content .form .h-box span,
+        .box .content .form .m-box span {
+
+            font-size: 20px;
+            font-weight: 200;
+
+            color: whitesmoke;
+        }
+
+        .box .content .form input:focus {
+
+            background: skyblue;
+        }
+
+        .box .content .btn {
+
+            display: block;
+
+            margin: 0 auto;
+
+            height: 30px;
+
+            font-size: 16px;
+
+            color: whitesmoke;
+
+            border: 1px solid whitesmoke;
+            border-radius: 5px;
+            background: transparent;
+
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        .box .content .btn:hover {
+
+            color: black;
+            background: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="content">
+            <div class="form">
+                <div class="h-box">
+                    <span>身高：</span>
+                    <input id="cm" type="text" class="input cm">
+                    <span>cm</span>
+                </div>
+                <div class="m-box">
+                    <span>體重：</span>
+                    <input id="kg" type="text" class="input kg">
+                    <span>kg</span>
+                </div>
+            </div>
+            <button id="btn" type="button" class="btn">查詢</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function bmi() {
+
+            //物件化
+            var int_cm = document.getElementById("cm");
+            var int_kg = document.getElementById("kg");
+            //型別宣告
+            var bmi = 0,
+                cm = 0,
+                kg = 0;
+
+            cm = int_cm.value / 100;
+            kg = int_kg.value;
+
+            bmi = kg / (cm * cm);
+
+            if (bmi < 18.5) {
+
+                alert("您目前BMI為 " + bmi.toFixed(1) + " ，體重過輕了！");
+                
+            } else if (bmi < 24) {
+                
+                alert("恭喜您目前BMI為 " + bmi.toFixed(1) + " ，是正常範圍！");
+                
+            } else if (bmi < 27) {
+                
+                alert("您目前BMI為 " + bmi.toFixed(1) + " ，有點過重！");
+                
+            } else if (bmi < 30) {
+                
+                alert("您目前BMI為 " + bmi.toFixed(1) + " ，輕度肥胖！");
+                
+            } else if (bmi < 35) {
+                
+                alert("您目前BMI為 " + bmi.toFixed(1) + " ，中度肥胖！");
+                
+            } else if (bmi >= 35) {
+                
+                alert("您目前BMI為 " + bmi.toFixed(1) + " ，重度肥胖！");
+                
+            }else {
+                
+                alert("請輸入正確數字！");
+            }
+            
+            //重置
+            int_cm.value = "";
+            int_kg.value = "";
+        }
+        //註冊監聽事件
+        function init() {
+
+            var btn = document.getElementById("btn");
+
+            btn.addEventListener("click", bmi, false);
+        }
+
+        window.onload = init;
+    </script>
+</body></html>
