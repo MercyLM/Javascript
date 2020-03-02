@@ -25,11 +25,12 @@ function pos() {
     //輸出結構
     document.getElementById("num-box").innerHTML = text;
 
+    //物件化
+    var pos = document.getElementsByClassName("num");
+    var arrow = document.getElementById("arrow");
+
     //賦予座標定位
     for (i = 0; i < num; i++) {
-
-        var pos = document.getElementsByClassName("num");
-        var arrow = document.getElementById("arrow");
 
         //半徑 * sin(deg) * Math.PI / 180 <-角度轉弧度 = Y軸
         pos[i].style.top = r * Math.sin(deg * (i - 2) * (Math.PI / 180)) + "px";
@@ -48,29 +49,29 @@ function pos() {
 function rand(e) {
 
     var arrow = document.getElementsByClassName("arrow")[0];
-    
+
     e.target.style.display = "none";
-    
+
     //隨機產生60~120次(5~10圈)
-    var rand = parseInt(Math.random() * 60) + 60;
+    var count = parseInt(Math.random() * 60) + 60;
     //隨機旋轉 5 ~ 8 秒
     var t = parseInt(Math.random() * 5) + 3;
 
-    arrow.style.transform = "translate(-50%, -50%) " + "rotate(" + rand * deg + "deg)";
+    arrow.style.transform = "translate(-50%, -50%) " + "rotate(" + count * deg + "deg)";
     arrow.style.transition = t + "s";
 
-    reset(arrow, num, rand, t, e);
+    reset(arrow, num, count, t, e);
 }
 
 //計算並顯示結果後初始化
-function reset(arrow, num, rand, t, e) {
+function reset(arrow, num, count, t, e) {
 
     var timer = null;
 
     //計時器
     timer = setInterval(function () {
 
-        alert("恭喜您抽到了 " + arr[(rand - 1) % num] + " 元！");
+        alert("恭喜您抽到了 " + arr[(count - 1) % num] + " 元！");
 
         //初始化
         arrow.style.transform = "";

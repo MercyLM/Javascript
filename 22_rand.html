@@ -21,9 +21,9 @@
 
         .show-box {
 
-            margin: 0 auto;
-
-            width: 75%;
+            margin: 10px 0;
+            
+            text-align: center;
         }
     </style>
 </head>
@@ -58,11 +58,8 @@
             
             var text = "";
             
-            for (i = min + 1; i < max; i++) {
-                
-                text += i + " ";
-            }
-            
+            text = parseInt(Math.random() * (max - min)) + min;
+
             document.getElementById("show").innerText = text;
         }
 
