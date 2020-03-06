@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>作業 24</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+<!--
+(1)內含一副程式isIdNo()可以傳入身份證號碼,經檢驗後,若身份證號碼正確則傳回true,若錯誤則傳回false。
+(2)該頁面上提供輸入界面,可供使用者輸入身份證號碼,並按檢查按鈕以呼叫isIdNo(),檢查輸入的資料是否正確
+
+<script>
+function isIdNo( idNo ){
+//檢查長度 
+//檢查第一碼 a..z,A..Z
+...
+//檢查第二碼 1,2
+...
+//算出檢查碼
+//算出的檢查碼是否和輸入的檢查碼一樣
+if(...){
+  	return true;
+  }else{
+    return false;
+  }
+} 
+
+var  idNo="A123456788";	 //令其可以從表單上輸入
+
+if( isIdNo( idNo ) == true )
+  window.alert("OK");
+else			  
+  window.alert("Error!!");
+</script>
+-->
+
+<body>
+    <p>請輸入身份證字號：
+        <input id="int" type="text" placeholder="A123456789">
+        <button id="btn" type="button">發送</button>
+    </p>
+    <script type="text/javascript">
+        //變數宣告
+        let int, btn;
+        let eng = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z", "I", "O"];
+        
+        console.log(eng.length);
+
+        //註冊window onLoad監聽事件
+        window.addEventListener("load", function() {
+
+            //物件化
+            int = document.getElementById("int");
+            btn = document.getElementById("btn");
+
+            //註冊int focus監聽事件，點擊input輸入框時清除提示字
+            int.addEventListener("focus", function() {
+
+                this.placeholder = "";
+            });
+
+            //註冊int blur監聽事件，離開input輸入框時顯示提示字
+            int.addEventListener("blur", function() {
+
+                this.placeholder = "A123456789";
+            });
+
+            //註冊btn onClick監聽事件
+            btn.addEventListener("click", function() {
+
+                //int輸入值傳入isNo變數
+                let idNo = int.value;
+
+                //呼叫isIdNo方法，判斷回傳的布林值
+                if (isIdNo(idNo) == true) {
+
+                    alert("輸入正確！");
+
+                } else {
+
+                    alert("輸入錯誤！")
+                }
+
+                //清除輸入欄位
+                int.value = "";
+            });
+        });
+
+        //檢驗方法，回傳布林值(true、false)
+        function isIdNo(idNo) {
+
+            console.log(idNo);
+        }
+    </script>
+</body></html>
