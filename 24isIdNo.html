@@ -10,34 +10,6 @@
     <link rel="stylesheet" href="">
     <link rel="icon" type="image/x-icon" href="" />
 </head>
-<!--
-(1)內含一副程式isIdNo()可以傳入身份證號碼,經檢驗後,若身份證號碼正確則傳回true,若錯誤則傳回false。
-(2)該頁面上提供輸入界面,可供使用者輸入身份證號碼,並按檢查按鈕以呼叫isIdNo(),檢查輸入的資料是否正確
-
-<script>
-function isIdNo( idNo ){
-//檢查長度 
-//檢查第一碼 a..z,A..Z
-...
-//檢查第二碼 1,2
-...
-//算出檢查碼
-//算出的檢查碼是否和輸入的檢查碼一樣
-if(...){
-  	return true;
-  }else{
-    return false;
-  }
-} 
-
-var  idNo="A123456788";	 //令其可以從表單上輸入
-
-if( isIdNo( idNo ) == true )
-  window.alert("OK");
-else			  
-  window.alert("Error!!");
-</script>
--->
 
 <body>
     <p>請輸入身份證字號：
@@ -48,8 +20,6 @@ else
         //變數宣告
         let int, btn;
         let eng = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z", "I", "O"];
-        
-        console.log(eng.length);
 
         //註冊window onLoad監聽事件
         window.addEventListener("load", function() {
@@ -80,10 +50,6 @@ else
                 if (isIdNo(idNo) == true) {
 
                     alert("輸入正確！");
-
-                } else {
-
-                    alert("輸入錯誤！")
                 }
 
                 //清除輸入欄位
@@ -94,7 +60,69 @@ else
         //檢驗方法，回傳布林值(true、false)
         function isIdNo(idNo) {
 
-            console.log(idNo);
+            let strFirst = "",
+                str = "",
+                newStr = "";
+            let toNum = 0,
+                total = 0,
+                checkNum = 0;
+
+            //先確認身分證號碼長度對不對，如果正確拆出第一個字及第二個字到最後的字。
+            if (idNo.length == 10) {
+
+                //字串第一個字
+                strFirst = idNo.slice(0, 1);
+                //強制轉成大寫
+                strFirst = strFirst.toUpperCase();
+                //如果第一個字是字母
+                if (eng.indexOf(strFirst) != -1) {
+
+                    //第一個字轉數字
+                    toNum = eng.indexOf(strFirst) + 10;
+
+                } else {
+
+                    alert("第一個字必須為字母！");
+                }
+                //第二個字以後的字
+                str = idNo.slice(1);
+
+                //檢查後面是否都是數字
+                if (!isNaN(Number(str))) {
+
+                    //組合成純數字的字串
+                    newStr = toNum + str;
+
+                    //乘上權重
+                    total = newStr.slice(0, 1) * 1;
+
+                    //從第二個數字乘到檢查碼前一個
+                    for (i = 1; i < newStr.length - 1; i++) {
+
+                        total += newStr.slice(i, i + 1) * (10 - i);
+                    }
+
+                    checkNum = 10 - (total % 10);
+
+                    //如果數字跟檢查碼一樣，回傳true，否則false
+                    if (checkNum == idNo.charAt(idNo.length - 1)) {
+
+                        return true;
+
+                    } else {
+
+                        return false
+                    }
+
+                } else {
+
+                    alert("請確認身分證字號是否正確！");
+                }
+
+            } else {
+
+                alert("身份證字號長度不正確！");
+            }
         }
     </script>
 </body></html>
