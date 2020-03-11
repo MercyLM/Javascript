@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>jQuery 0311作業</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <style>
+        body {
+
+            margin: 0px;
+        }
+
+        .selectContent {
+
+            border-bottom: 2px solid skyblue;
+        }
+
+        .typeContent {
+
+            display: inline-block;
+            vertical-align: top;
+
+            text-transform: capitalize;
+        }
+
+        .title {
+
+            text-align: center;
+        }
+
+        .btn {
+
+            margin: 5px;
+            padding: 5px;
+
+            border: 3px solid skyblue;
+            border-radius: 5px;
+            background: skyblue;
+
+            box-sizing: border-box;
+            opacity: .4;
+        }
+
+        .btn:focus {
+
+            outline-color: transparent;
+        }
+
+        .btn.-on {
+
+            opacity: 1;
+        }
+
+        table {
+
+            margin: 10px;
+
+            border-collapse: collapse;
+        }
+
+        td {
+
+            padding: 5px;
+
+            border: 1px solid black;
+
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="selectBox">
+            <form class="selectContent"></form>
+        </div>
+        <div class="showBox">
+            <table cellpadding="0" class="showContent"></table>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            //分類
+            let type = ["condiments", "deli", "coffeeTea", "bread"];
+            //分類內的選項
+            let content = [
+                ["mustard", "salt", "pepper", "spices", "soy sauce", "olive oil", "ketchup", "cooking oil", "suger"],
+                ["roast beef", "turkey", "swiss cheese", "potato salad", "potato Diane"],
+                ["coffee", "herbal tea", "hot chocolate", "latte", "Con Panna", "Viennese coffee"],
+                ["white bread", "wheat bread", "whole grain bread", "rye bread", "pretzel", "pita bread", "french bread", "bagel", "rolls", "dount", "bread", "sticks", "swiss rolls", "croissant"]
+            ];
+
+            //幾個分類
+            let typeLen = type.length;
+            //平均區塊寬度
+            let typeWidth = 100 / typeLen + "%";
+
+            //結構的存放
+            let text, btn, show;
+
+            for (i = 0; i < content.length; i++) {
+
+                //初始化
+                text = "";
+                btn = "";
+                show = "";
+
+                for (j = 0; j < content[i].length; j++) {
+
+                    //按鈕結構
+                    btn += "<input type='button' class ='btn' value='" + content[i][j] + "'></button>";
+                }
+
+                //分類區結構
+                text += "<section class='typeContent'><p class='title'>" + type[i] + "</p>" + btn + "</section>";
+                //顯示區結構
+                show += "<tr id = '" + type[i] + "'><td>" + type[i] + "</td></tr>";
+
+                //新增結構
+                $(".selectContent").append(text);
+                $(".showContent").append(show);
+            }
+
+            $(".typeContent").css("width", typeWidth);
+
+            //點選反饋
+            $(".btn").click(function() {
+
+                let btnValue = $(this).val();
+
+                $(this).toggleClass("-on");
+
+                if ($(this).hasClass("-on")) {
+
+                    for (i = 0; i < typeLen; i++) {
+
+                        if ($.inArray(btnValue, content[i]) != -1) {
+
+                            let id = "#" + type[i];
+
+                            $(id).append("<td>" + btnValue + "</td>");
+                        }
+                    }
+
+                }
+            })
+        });
+    </script>
+</body></html>
