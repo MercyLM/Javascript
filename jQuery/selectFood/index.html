@@ -16,6 +16,7 @@
 
         .selectContent {
 
+            display: flex;
             border-bottom: 2px solid skyblue;
         }
 
@@ -23,13 +24,23 @@
 
             display: inline-block;
             vertical-align: top;
+            
+            border: 1px solid skyblue;
 
             text-transform: capitalize;
+            box-sizing: border-box;
         }
 
         .title {
 
+            margin: 0px;
+            padding: 5px 0px;
+            
             text-align: center;
+            
+            border-bottom: 1px solid skyblue;
+            
+            box-sizing: border-box;
         }
 
         .btn {
@@ -59,7 +70,13 @@
 
             margin: 10px;
 
+            border: 1px solid black;
             border-collapse: collapse;
+        }
+        
+        tr {
+            
+            empty-cells: show;
         }
 
         td {
@@ -70,7 +87,6 @@
 
             text-transform: capitalize;
         }
-
     </style>
 </head>
 
@@ -156,14 +172,13 @@
 
                     let id = "#" + btnValue.replace(/ /g, "");
 
-                    console.log(id);
-
                     $(id).remove();
                 }
             });
         });
 
+        //已知問題：
+        // remove時偶爾會有td的boder殘留
+        // td的boder框線如何產出
     </script>
-</body>
-
-</html>
+</body></html>
