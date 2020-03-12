@@ -24,7 +24,7 @@
 
             display: inline-block;
             vertical-align: top;
-            
+
             border: 1px solid skyblue;
 
             text-transform: capitalize;
@@ -35,11 +35,11 @@
 
             margin: 0px;
             padding: 5px 0px;
-            
+
             text-align: center;
-            
+
             border-bottom: 1px solid skyblue;
-            
+
             box-sizing: border-box;
         }
 
@@ -73,9 +73,9 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-        
+
         tr {
-            
+
             empty-cells: show;
         }
 
@@ -158,18 +158,20 @@
 
                     //尋找該按鈕在哪一個分類裡面
                     for (i = 0; i < typeLen; i++) {
-
+                        
                         if ($.inArray(btnValue, content[i]) != -1) {
-
-                            let id = "#" + type[i];
-
-                            //replace替換指定字串方法，/字串/g為全局指定
+                            
+                            //類別id
+                            let id = "#" + type[i]; 
+                            
+                            //replace替換指定字串方法，/字串/g為全局指定                            
                             $(id).append("<td id='" + btnValue.replace(/ /g, "") + "'>" + btnValue + "</td>");
                         }
                     }
 
                 } else {
 
+                    //內容id
                     let id = "#" + btnValue.replace(/ /g, "");
 
                     $(id).remove();
@@ -177,7 +179,7 @@
             });
         });
 
-        //已知問題：
+        //第一版已知問題：
         // remove時偶爾會有td的boder殘留
         // 空的td boder框線如何產出
     </script>
