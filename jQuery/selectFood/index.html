@@ -70,6 +70,7 @@
 
             text-transform: capitalize;
         }
+
     </style>
 </head>
 
@@ -87,7 +88,7 @@
         $(document).ready(function() {
 
             //分類
-            let type = ["condiments", "deli", "coffeeTea", "bread"];
+            let type = ["Condiments", "Deli", "CoffeeTea", "Bread"];
             //分類內的選項
             let content = [
                 ["mustard", "salt", "pepper", "spices", "soy sauce", "olive oil", "ketchup", "cooking oil", "suger"],
@@ -136,20 +137,33 @@
 
                 $(this).toggleClass("-on");
 
+                //檢查按鈕選取狀態
                 if ($(this).hasClass("-on")) {
 
+                    //尋找該按鈕在哪一個分類裡面
                     for (i = 0; i < typeLen; i++) {
 
                         if ($.inArray(btnValue, content[i]) != -1) {
 
                             let id = "#" + type[i];
 
-                            $(id).append("<td>" + btnValue + "</td>");
+                            //replace替換指定字串方法，/字串/g為全局指定
+                            $(id).append("<td id='" + btnValue.replace(/ /g, "") + "'>" + btnValue + "</td>");
                         }
                     }
 
+                } else {
+
+                    let id = "#" + btnValue.replace(/ /g, "");
+
+                    console.log(id);
+
+                    $(id).remove();
                 }
-            })
+            });
         });
+
     </script>
-</body></html>
+</body>
+
+</html>
