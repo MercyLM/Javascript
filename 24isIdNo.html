@@ -19,7 +19,7 @@
     <script type="text/javascript">
         //變數宣告
         let int, btn;
-        let eng = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "X", "W", "Y", "Z", "I", "O"];
+        let eng = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "W", "Z", "I", "O"];
 
         //註冊window onLoad監聽事件
         window.addEventListener("load", function() {
@@ -75,7 +75,7 @@
             if (idNo.length == 10) {
 
                 //字串第一個字
-                strFirst = idNo.slice(0, 1);
+                strFirst = idNo[0];
                 //強制轉成大寫
                 strFirst = strFirst.toUpperCase();
                 //如果第一個字是字母
@@ -88,6 +88,7 @@
 
                     alert("第一個字必須為字母！");
                 }
+                
                 //第二個字以後的字
                 str = idNo.slice(1);
 
@@ -98,12 +99,12 @@
                     newStr = toNum + str;
 
                     //乘上權重
-                    total = newStr.slice(0, 1) * 1;
+                    total = newStr[0] * 1;
 
                     //從第二個數字乘到檢查碼前一個
                     for (i = 1; i < newStr.length - 1; i++) {
 
-                        total += newStr.slice(i, i + 1) * (10 - i);
+                        total += newStr[i] * (10 - i);
                     }
 
                     checkNum = 10 - (total % 10);
