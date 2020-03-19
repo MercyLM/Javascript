@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <p>請輸入金額：</p>
+        <input id="num" type="text">
+        <button type="button" onclick="myFunction()">發送</button>
+        <p id="show"></p>
+    </main>
+    <footer></footer>
+    <script type="text/javascript">
+        function myFunction() {
+            
+            num = document.getElementById("num");
+            
+            var money = num.value;
+            var total = 0;
+            
+            document.getElementById("num").value = "";
+
+            if (money <= 540000) {
+
+                total = parseInt(money * 0.05);
+
+                document.getElementById("show").innerHTML = "級別：1<br>應繳稅額為： " + total + " 元";
+
+            } else if (money <= 1210000) {
+
+                total = parseInt((money * 0.12) - 37800);
+
+                document.getElementById("show").innerHTML = "級別：2<br>應繳稅額為： " + total + " 元";
+
+            } else if (money <= 2420000) {
+
+                total = parseInt((money * 0.2) - 134600);
+
+                document.getElementById("show").innerHTML = "級別：3<br>應繳稅額為： " + total + " 元";
+
+            } else if (money <= 4530000) {
+
+                total = parseInt((money * 0.3 ) - 376600);
+
+                document.getElementById("show").innerHTML = "級別：4<br>應繳稅額為： " + total + " 元";
+
+            } else if (money > 4530000){
+
+                total = parseInt((money * 0.4) - 829600);
+
+                document.getElementById("show").innerHTML = "級別：5<br>應繳稅額為： " + total + " 元";
+                
+            } else {
+                
+                document.getElementById("show").innerHTML = "請輸入正確數字！";
+            }
+        }
+    </script>
+</body></html>

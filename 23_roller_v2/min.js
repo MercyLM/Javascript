@@ -43,7 +43,7 @@ function pos() {
         //文字旋轉
         pos[i].style.transform = "translate(-50%, -50%) " + "rotate(" + deg * (i + 1) + "deg)";
 
-        //箭頭的寬度, 直徑 * 角度 * (轉弧度公式) / 3 (左右各半的一半)
+        //箭頭的寬度, 直徑 * 角度 * (轉弧度公式) / 4 (左右各半的一半)
         arrows[i].style.borderRight = 2 * r * deg * (Math.PI / 180) / 3 + "px solid rgba(0,0,0,0)";
         arrows[i].style.borderLeft = 2 * r * deg * (Math.PI / 180) / 3 + "px solid rgba(0,0,0,0)";
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    <script type="text/javascript">
+        var title = ["學號", "姓名", "電話", "地址"];
+        var one = [94951001, "黃一丁", "0911000333", "中壢市中大路1號"];
+        var two = [94951002, "劉二毛", "0922999887", "高雄市中山路2號"];
+        var three = [94951003, "張大化", "0933555779", "台北市師大路3號"];
+
+        document.write(
+            "<div style='display:inline-block;height:200px;'>" +
+            "<p style='text-align:center;color:red;font-weight:bold'>好媒媒班級通訊錄</p>" +
+            "<table style='text-align:center;border:1px solid black;'>");
+
+        document.write("<tr style='background: orange;font-weight:bold'>");
+
+        for (j = 0; j < title.length; j++) {
+
+            document.write("<td style='border:1px solid black;'>" + title[j] + "</td>");
+        }
+        //----第二列
+        document.write("<tr>");
+
+        for (j = 0; j < title.length; j++) {
+
+            document.write("<td style='border:1px solid black;'>" + one[j] + "</td>");
+        }
+
+        document.write("</tr>");
+        //----第三列
+        document.write("<tr>");
+
+        for (j = 0; j < title.length; j++) {
+
+            document.write("<td style='border:1px solid black;'>" + two[j] + "</td>");
+        }
+
+        document.write("</tr>");
+        //----第四列
+        document.write("<tr>");
+
+        for (j = 0; j < title.length; j++) {
+
+            document.write("<td style='border:1px solid black;'>" + three[j] + "</td>");
+        }
+
+        document.write("</tr>");
+
+        document.write("</table>" + "</div>");
+    </script>
+</body></html>

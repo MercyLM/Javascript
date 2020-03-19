@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+<!--
+(if)
+寫程式，設定變數存放一斤的單價，及購買的斤數，並算出小計為何,
+若消費金額超過500元, 則打九折,
+若消費金額超過1000元, 則打七折
+-->
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    <script type="text/javascript">
+        var piece = 60;
+        var kg = [8, 10, 20];
+
+        for (i = 0; i < kg.length; i++) {
+
+            var subTotal = "";
+            var total = "";
+
+            document.write("購買 ", kg[i], " 斤<br>");
+
+            subTotal = piece * kg[i];
+
+            if (subTotal <= 500) {
+
+                total = subTotal;
+
+
+            } else if (subTotal > 500 && subTotal <= 1000) {
+
+                total = subTotal * 0.9;
+
+            } else {
+
+                total = subTotal * 0.7;
+            }
+
+            document.write("小計： ", subTotal, "元 | 總計： ", total, " 元。<br><br>");
+        }
+    </script>
+</body></html>

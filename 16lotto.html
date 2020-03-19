@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    <script type="text/javascript">
+        //準備一個容器
+        var box = [];
+        //需要幾顆球
+        var amount = 49;
+        //亂數
+        var num = 0;
+        //要幾個數字
+        var max = 6;
+        //目前抽了幾個
+        var count = 0;
+        //抽出了哪些球
+        var text = [];
+
+        //放入amount顆球
+        for (i = 0; i < amount; i++) {
+
+            box[i] = i + 1;
+        }
+
+        //開始抽球球
+        do {
+
+            //亂數產生器 1 ~ amount
+            num = parseInt(Math.random() * amount + 1);
+
+            //檢查球球還在嗎，如果在，就抽出來
+            if (box.indexOf(num) != -1) {
+
+                //抽出的球放入text
+                text[count] = num;
+                
+                //抽出的球球改為0
+                box[box.indexOf(num)] = 0;
+                
+                count += 1;
+            }
+
+        } while (count != max);
+        
+        //顯示結果
+        document.write(text);
+        
+        //檢查球是否真的有被抽掉
+        console.log(box);
+    </script>
+</body></html>

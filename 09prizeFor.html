@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+<!--
+摸彩金 : 有11顆彩球, 彩球面額為0-10之間, 可以摸彩10次, 印出其每次的摸彩金額及彩金總金額(單位:佰元)
+
+//跑10次
+//...每次要產生一個0~10之間的亂數number
+//...累加總數
+//印出總金額
+-->
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    <script type="text/javascript">
+        var test = 0;
+        var sum = 0;
+
+        for (i = 0; i < 10; i++) {
+
+            test = parseInt(Math.random() * 11) * 100;
+
+            document.write(test + " ");
+
+            sum += test;
+        }
+
+        document.write("<br>總和： " + sum + " 元");
+    </script>
+</body></html>
