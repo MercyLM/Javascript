@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+    <style>
+        .box {
+
+            display: inline-block;
+
+            width: 350px;
+
+            text-align: center;
+        }
+
+        .selectBox {
+
+            margin: 10px 0;
+        }
+
+        table {
+
+            border-collapse: collapse;
+
+            box-shadow: 0px 0px 2px black;
+        }
+
+        .title {
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+            background: skyblue;
+
+            box-sizing: border-box;
+        }
+
+        .week {
+
+            height: 50px;
+            width: 50px;
+
+            text-align: center;
+        }
+
+        .date {
+
+            height: 50px;
+            width: 50px;
+
+            text-align: center;
+
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="selectBox">
+            <select id="year" class="year">
+                <option value="">請選擇...</option>
+            </select>
+            <select id="month" class="month"></select>
+        </div>
+        <table id="table"></table>
+    </div>
+    <script type="text/javascript">
+        
+        var MyDate = {
+
+            getWeek: () => {
+
+
+            }
+        }
+
+        const calender = () => {
+
+            // select 物件
+            const year = document.getElementById("year");
+            const mon = document.getElementById("month");
+            // option index
+            const year_index = year.selectedIndex;
+            const mon_index = mon.selectedIndex;
+            // option value
+            const year_value = year.options[year_index].value;
+            const mon_value = mon.options[mon_index].value;
+            // 獲取當月第一天為星期幾
+            const firstDateWeek = new Date(year_value, mon_value, 1).getDay();
+            // 平年的每月天數
+            let arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            // 判斷是不是閏年
+            if (year_value % 4 == 0 && year_value % 100 != 0) {
+
+                //如果是 4 的倍數，且不是 100 的倍數，2月是29天
+                arr[1] = 29;
+
+            } else if (year_value % 400 == 0) {
+
+                //如果是 400 的倍數，2月是29天
+                arr[1] = 29;
+            }
+
+            // 結構存放
+            let html = "";
+            let date = 1;
+
+            for (i = 0; i < 6; i++) {
+
+                if (i == 0) {
+
+                    html = "<tr class='title'>" +
+                        "<th class='week'>日</td>" +
+                        "<th class='week'>一</td>" +
+                        "<th class='week'>二</td>" +
+                        "<th class='week'>三</td>" +
+                        "<th class='week'>四</td>" +
+                        "<th class='week'>五</td>" +
+                        "<th class='week'>六</td>" +
+                        "</tr>";
+
+                    html += "<tr>"
+
+                    for (j = 0; j < firstDateWeek; j++) {
+
+                        html += "<td></td>";
+                    }
+
+                    for (k = firstDateWeek; k < 7; k++) {
+
+                        html += "<td class='date'>" + date + "</td>";
+
+                        date++;
+                    }
+
+                    html += "</tr>";
+
+                } else {
+
+                    html += "<tr>"
+
+                    for (k = 0; k < 7; k++) {
+
+                        if (date > arr[mon_value]) {
+
+                            break;
+                        }
+
+                        html += "<td class='date'>" + date + "</td>";
+
+                        date++;
+                    }
+
+                    html += "</tr>"
+                }
+            }
+
+            const table = document.getElementById("table");
+
+            table.innerHTML = html;
+        }
+
+        window.addEventListener("load", () => {
+
+            // 起始年份
+            let firstYear = 2015;
+            // 範圍
+            const range = 10;
+            // select 物件
+            const year = document.getElementById("year");
+            const mon = document.getElementById("month");
+            const select = document.getElementsByTagName("select");
+
+            // 賦予 year select 的 option
+            for (i = 0; i < range; i++) {
+
+                let option = new Option(firstYear + i, firstYear + i);
+
+                year.add(option);
+            }
+            // 賦予 month select 的 option
+            for (i = 0; i < 12; i++) {
+
+                let option = new Option(i + 1 + " 月", i);
+
+                mon.add(option);
+            }
+
+            // 只要有變更選項就刷新一次
+            for (i = 0; i < select.length; i++) {
+
+                select[i].addEventListener("change", () => calender());
+            }
+        });
+
+    </script>
+</body>
+
+</html>
