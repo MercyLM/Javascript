@@ -1,0 +1,69 @@
+  * {
+      padding: 0;
+      margin: 0;
+  }
+
+  body {
+      
+      background-image: url(BG002.gif);
+  }
+
+  #lightBox {
+      
+      display: none;
+      position: fixed;
+
+      width: 100%;
+      height: 100%;
+
+      background: rgba(66, 66, 66, .6);
+  }
+
+  #tableLogin {
+
+      position: absolute;
+
+      margin: auto;
+
+      top: 50%;
+      left: 50%;
+      
+      transform: translate(-50%, -50%);
+
+      width: 300px;
+
+      background-color: #FFCCDD;
+      border: 1px dotted deepPink;
+  }
+
+  #tableLogin td {
+      
+      padding: 2px 2px;
+      
+      height: 20px;
+      
+      border-style: none;
+      border-bottom: 1px dotted deeppink;
+  }
+
+  #tableLogin input {
+      
+      padding-left: 2px;
+      
+      font-size: 16px;
+      
+      background-color: #FFCCDD;
+  }
+
+  #btnLogin,
+  #btnLoginCancel {
+      
+      margin-left: 5px;
+      padding: 2px;
+  }
+
+  #spanLogin:hover {
+      
+      cursor: pointer;
+      text-decoration: underline;
+  }

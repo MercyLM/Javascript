@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {
+
+            position: relative;
+            margin: 0 auto;
+
+            width: 500px;
+            height: 500px;
+
+            font-size: 0px;
+
+            border: 1px solid black;
+        }
+
+        .num-box {
+
+            position: absolute;
+            display: inline-block;
+
+            margin: 0px;
+
+            text-align: center;
+
+            width: 125px;
+            height: 125px;
+            line-height: 125px;
+
+            font-size: 20px;
+
+            border: 1px solid skyblue;
+            box-sizing: border-box;
+        }
+
+        .num-box:nth-child(1) {
+
+            left: 0px;
+            top: 0px;
+        }
+
+        .num-box:nth-child(2) {
+
+            left: 125px;
+            top: 0px;
+        }
+
+        .num-box:nth-child(3) {
+
+            left: 250px;
+            top: 0px;
+        }
+
+        .num-box:nth-child(4) {
+
+            right: 0px;
+            top: 0px;
+        }
+
+        .num-box:nth-child(5) {
+
+            right: 0px;
+            top: 125px;
+        }
+
+        .num-box:nth-child(6) {
+
+            right: 0px;
+            top: 250px;
+        }
+
+        .num-box:nth-child(7) {
+
+            right: 0px;
+            bottom: 0px;
+        }
+
+        .num-box:nth-child(8) {
+
+            left: 250px;
+            bottom: 0px;
+        }
+
+        .num-box:nth-child(9) {
+
+            left: 125px;
+            bottom: 0px;
+        }
+
+        .num-box:nth-child(10) {
+
+            left: 0px;
+            bottom: 0px;
+        }
+
+        .num-box:nth-child(11) {
+
+            left: 0px;
+            top: 250px;
+        }
+
+        .num-box:nth-child(12) {
+
+            left: 0px;
+            top: 125px;
+        }
+
+        button {
+
+            display: block;
+
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="num-box">1000</div>
+        <div class="num-box">2000</div>
+        <div class="num-box">5000</div>
+        <div class="num-box">10000</div>
+        <div class="num-box">20000</div>
+        <div class="num-box">30000</div>
+        <div class="num-box">50000</div>
+        <div class="num-box">75000</div>
+        <div class="num-box">100000</div>
+        <div class="num-box">200000</div>
+        <div class="num-box">500000</div>
+        <div class="num-box">1000000</div>
+    </div>
+    <button id="btn" type="button" class="btn">開始</button>
+    <script type="text/javascript">
+        //網頁讀取完畢後執行一個"匿名函式"
+        window.addEventListener("load", function() {
+
+            //按鈕物件化
+            let btn = document.getElementById("btn");
+
+            //新增按鈕點擊監聽事件
+            btn.addEventListener("click", function() {
+
+                //計時器
+                let timer;
+                //間隔時間
+                let t = 100;
+                //產生亂數，代表執行幾次 (12~30次)
+                let maxCount = parseInt(Math.random() * 18 + 12);
+                //存放目前執行了幾次
+                let count = 0;
+                //起點
+                let i = 0;
+                //數字盒物件化，要記住class可以是複數(s)，所以是陣列物件
+                let numBox = document.getElementsByClassName("num-box");
+
+                //起點開始亮燈
+                numBox[i].style.background = "yellow";
+                count += 1;
+
+                console.log(maxCount);
+
+                //計時器
+                timer = setInterval(time, t);
+
+                function time() {
+
+                    //如果次數達到了，就停止
+                    if (count == maxCount) {
+
+                        clearTimeout(timer);
+
+                        alert("抽到了 " + numBox[i].innerText + " 元！");
+
+                        //初始化
+                        numBox[i].style.background = "";
+
+                        return;
+                    }
+
+                    //上一個正常化
+                    numBox[i].style.background = "";
+
+                    //下一個亮燈
+                    i++;
+                    count++;
+
+                    //如果 i 到了數字盒的數量 (12)，回到第一個 (0)
+                    if (i == numBox.length) {
+
+                        i = 0;
+                    }
+
+                    numBox[i].style.background = "yellow";
+
+
+                    //間隔時間的速度控制，次數 * 15 代表會越走越慢 (每次間隔都多15毫秒)
+                    t = count * 15 ;
+
+                    //清除計時器
+                    clearInterval(timer);
+
+                    //重新執行計時器，放入新的間隔時間
+                    timer = setInterval(time, t);
+                }
+            });
+        });
+    </script>
+</body></html>

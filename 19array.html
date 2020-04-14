@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Example Title</title>
+	<meta name="author" content="Your Name">
+	<meta name="description" content="Example description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="">
+	<link rel="icon" type="image/x-icon" href=""/>
+</head>
+
+<body>
+	<header></header>
+	<main></main>
+	<footer></footer>
+<!--
+隨機產生10個介於1-~100之間的數放在陣列中, 
+印出這10個數, 總和 , 最小值 , 最大值
+-->
+	<script type="text/javascript">
+        
+        //準備一個空陣列
+        var arr = [];
+        //存放數字
+        var sum = 0, min = 100, max = 0;
+        
+        //產生10個亂數放入陣列
+        for( i = 0; i < 10; i++){
+            
+            arr[i] = parseInt(Math.random() * 100 + 1);
+        }
+        
+        //檢查目前陣列狀態
+        document.write("<p>" + arr + "</p>");
+        
+        for( i = 0; i < arr.length; i++){
+            
+            sum += arr[i];
+        }
+        
+        document.write("<p>總和： " + sum + "</p>");
+        
+        //最小值
+        for(i = 0; i < arr.length; i++){
+            
+            if( arr[i] < min){
+                
+                min = arr[i];
+            }
+        }
+        
+        document.write("<p>最小值： " + min + "</p>");
+        
+        //最大值
+        for(i = 0; i < arr.length; i++){
+            
+            if( arr[i] > max){
+                
+                max = arr[i];
+            }
+        }
+        
+        document.write("<p>最大值： " + max + "</p>");
+    </script>
+</body>
+
+</html>

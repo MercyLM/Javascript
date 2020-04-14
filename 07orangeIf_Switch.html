@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+<!--
+(switch if)
+寫程式，設定變數存放所購買的等級及公斤數,並算出小計
+-->
+
+<body>
+    <header></header>
+    <main>
+        <form name="myForm">
+            請選擇等級：
+            <select id="level">
+                <option id="level" value="1">1</option>
+                <option id="level" value="2">2</option>
+                <option id="level" value="3">3</option>
+            </select>
+            <br>
+            <br>
+            <input type="text" id="kg" name="kg" placeholder="請輸入公斤，並以空格隔開">
+            <button type="button" value="Submit" onclick="myFunction()">發送</button>
+            <p>例如：30 50 120</p>
+        </form>
+        <br>
+        <div id="show"></div>
+    </main>
+    <footer></footer>
+    <script type="text/javascript">
+        function myFunction() {
+
+
+            var level = document.getElementById("level").selectedIndex;
+            var lv = document.getElementsByTagName("option")[level].value;
+            var msg = document.getElementById("kg");
+            var value = msg.value;
+            var kg = value.slice(0).split(" ");
+            var test = "";
+
+            var data = [{
+
+                piece: [30, 25, 20]
+            }, {
+
+                piece: [25, 20, 15]
+            }, {
+
+                piece: [20, 15, 10]
+            }];
+
+            switch (lv) {
+
+                case "1":
+
+                    for(i = 0; i < kg.length; i++){
+                        
+                        var subTotal = "";
+                        
+                        if (kg[i] <= 40){
+                            
+                            subTotal = kg[i] * data[lv].piece[0];
+                            
+                        }else if(kg[i] > 40 && kg[i] <= 100){
+                            
+                            subTotal = kg[i] * data[lv].piece[1];
+                        }else {
+                            
+                            subTotal = kg[i] * data[lv].piece[2];
+                        }
+                        test += "等級： " + lv + "<br>購買：" + kg[i] + "斤<br>小計： " + subTotal + " 元<br><br>";
+                    }
+                    
+                    document.getElementById("show").innerHTML = test;
+
+                    break;
+                case "2":
+
+                    for(i = 0; i < kg.length; i++){
+                        
+                        var subTotal = "";
+                        
+                        if (kg[i] <= 40){
+                            
+                            subTotal = kg[i] * data[lv].piece[0];
+                            
+                        }else if(kg[i] > 40 && kg[i] <= 100){
+                            
+                            subTotal = kg[i] * data[lv].piece[1];
+                        }else {
+                            
+                            subTotal = kg[i] * data[lv].piece[2];
+                        }
+                        test += "等級： " + lv + "<br>購買：" + kg[i] + "斤<br>小計： " + subTotal + " 元<br><br>";
+                    }
+                    
+                    document.getElementById("show").innerHTML = test;
+
+                    break;
+                case "3":
+
+                    for(i = 0; i < kg.length; i++){
+                        
+                        var subTotal = "";
+                        
+                        if (kg[i] <= 40){
+                            
+                            subTotal = kg[i] * data[lv].piece[0];
+                            
+                        }else if(kg[i] > 40 && kg[i] <= 100){
+                            
+                            subTotal = kg[i] * data[lv].piece[1];
+                        }else {
+                            
+                            subTotal = kg[i] * data[lv].piece[2];
+                        }
+                        test += "等級： " + lv + "<br>購買：" + kg[i] + "斤<br>小計： " + subTotal + " 元<br><br>";
+                    }
+                    
+                    document.getElementById("show").innerHTML = test;
+
+                    break;
+            }
+            
+            msg.value = "";
+        }
+
+    </script>
+</body>
+
+</html>

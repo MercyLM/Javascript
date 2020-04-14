@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="author" content="Your Name">
+    <meta name="description" content="Example description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+
+<body>
+    <header></header>
+    <main></main>
+    <footer></footer>
+    <script type="text/javascript">
+        var text = "";
+
+        for (i = 0; i < 6; i++) {
+
+            text += "*";
+
+            document.write(text + "<br>");
+
+            if (i == 5) {
+
+                //從5顆星開始
+                for (j = 5; j > 0; j--) {
+
+                    //清除星星數
+                    var reText = "";
+
+                    for (k = 0; k < j; k++) {
+
+                        reText += "*";
+                    }
+
+                    document.write(reText + "<br>");
+                }
+            }
+        }
+
+        document.write("<br><br>");
+
+        //閃出靈感的作法二
+
+        var text = "";
+
+        for (i = 0; i < 11; i++) {
+
+            if (i < 6) {
+
+                text += "*";
+                document.write(text + "<br>");
+
+            } else {
+
+                var reText = "";
+
+                for (j = 5; j > i - 6; j--) {
+
+                    reText += "*";
+                }
+
+                document.write(reText + "<br>");
+            }
+        }
+        
+        document.write("<br><br>");
+
+        //聽完0214陣列部分後，作法三
+
+        var text = "";
+        var arr = [];
+
+        for (i = 0; i < 6; i++) {
+
+            text += "*";
+            
+            arr[i] = text;
+            
+            document.write( text + "<br>");
+            
+            if ( i == 5 ){
+                
+                for ( j = 4; j >= 0; j--){
+                    
+                    document.write(arr[j] + "<br>");
+                }
+            }
+        }
+        
+        document.write("<br><br>");
+
+        //挑戰一個for
+        
+        var text = "";
+        
+        for ( i = 0; i < 11; i++){
+            
+            if( i < 6){
+                
+                text += "*";
+                arr[i] = text;
+                
+                document.write( text + "<br>");
+                
+            }else{
+                
+                document.write(arr[ 10 - i ] + "<br>");
+            }
+        }
+    </script>
+</body></html>
